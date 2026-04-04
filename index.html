@@ -1,0 +1,538 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Lais Amarkhail – Data Analyst</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--bg: #0b0f1a;
+			--bg2: #111827;
+			--accent: #3b82f6;
+			--accent2: #60a5fa;
+			--accent-glow: rgba(59,130,246,0.18);
+			--text: #e2e8f0;
+			--muted: #94a3b8;
+			--border: rgba(255,255,255,0.07);
+			--card: rgba(255,255,255,0.04);
+			--font-display: 'Syne', sans-serif;
+			--font-body: 'DM Sans', sans-serif;
+		}
+		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+		html { scroll-behavior: smooth; }
+		body {
+			background: var(--bg);
+			color: var(--text);
+			font-family: var(--font-body);
+			font-size: 16px;
+			line-height: 1.7;
+			overflow-x: hidden;
+		}
+
+		/* ── NAV ── */
+		nav {
+			position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+			display: flex; justify-content: center; gap: 2.5rem;
+			padding: 1.2rem 2rem;
+			background: rgba(11,15,26,0.82);
+			backdrop-filter: blur(14px);
+			border-bottom: 1px solid var(--border);
+		}
+		nav a {
+			font-family: var(--font-display);
+			font-size: 0.82rem; font-weight: 600;
+			letter-spacing: 0.12em; text-transform: uppercase;
+			color: var(--muted); text-decoration: none;
+			transition: color 0.2s;
+		}
+		nav a:hover, nav a.active { color: var(--accent2); }
+
+		/* ── HERO ── */
+		#hero {
+			min-height: 100vh;
+			display: flex; flex-direction: column; justify-content: center; align-items: center;
+			text-align: center;
+			padding: 7rem 2rem 4rem;
+			position: relative;
+			overflow: hidden;
+		}
+		#hero::before {
+			content: '';
+			position: absolute; inset: 0;
+			background: radial-gradient(ellipse 70% 55% at 50% 40%, rgba(59,130,246,0.13) 0%, transparent 70%);
+			pointer-events: none;
+		}
+		.hero-label {
+			font-family: var(--font-display);
+			font-size: 0.75rem; font-weight: 700; letter-spacing: 0.22em;
+			text-transform: uppercase; color: var(--accent);
+			margin-bottom: 1.4rem;
+			opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
+		}
+		#hero h1 {
+			font-family: var(--font-display);
+			font-size: clamp(3rem, 7vw, 5.5rem);
+			font-weight: 800; line-height: 1.05;
+			letter-spacing: -0.02em;
+			opacity: 0; animation: fadeUp 0.7s 0.35s forwards;
+		}
+		#hero h1 span { color: var(--accent); }
+		.hero-sub {
+			margin-top: 1.4rem;
+			font-size: 1.15rem; font-weight: 300; color: var(--muted);
+			max-width: 560px;
+			opacity: 0; animation: fadeUp 0.7s 0.5s forwards;
+		}
+		.hero-badges {
+			display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;
+			margin-top: 2rem;
+			opacity: 0; animation: fadeUp 0.7s 0.65s forwards;
+		}
+		.badge {
+			background: var(--accent-glow);
+			border: 1px solid rgba(59,130,246,0.35);
+			color: var(--accent2);
+			font-size: 0.78rem; font-weight: 500;
+			padding: 0.28rem 0.85rem; border-radius: 999px;
+		}
+		.hero-cta {
+			display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+			margin-top: 2.8rem;
+			opacity: 0; animation: fadeUp 0.7s 0.8s forwards;
+		}
+		.btn {
+			font-family: var(--font-display); font-size: 0.85rem; font-weight: 700;
+			letter-spacing: 0.08em; text-transform: uppercase;
+			padding: 0.75rem 2rem; border-radius: 6px;
+			text-decoration: none; transition: all 0.22s;
+			cursor: pointer;
+		}
+		.btn-primary {
+			background: var(--accent); color: #fff;
+			border: 2px solid var(--accent);
+		}
+		.btn-primary:hover { background: var(--accent2); border-color: var(--accent2); transform: translateY(-2px); }
+		.btn-ghost {
+			background: transparent; color: var(--text);
+			border: 2px solid var(--border);
+		}
+		.btn-ghost:hover { border-color: var(--accent); color: var(--accent2); transform: translateY(-2px); }
+
+		/* ── SECTIONS ── */
+		section { padding: 6rem 1.5rem; }
+		.container { max-width: 1000px; margin: 0 auto; }
+		.section-label {
+			font-family: var(--font-display);
+			font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em;
+			text-transform: uppercase; color: var(--accent);
+			margin-bottom: 0.5rem;
+		}
+		.section-title {
+			font-family: var(--font-display);
+			font-size: clamp(2rem, 4vw, 2.8rem);
+			font-weight: 800; line-height: 1.1;
+			margin-bottom: 3rem;
+		}
+
+		/* ── ABOUT ── */
+		#about { background: var(--bg2); }
+		.about-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 3.5rem; align-items: start;
+		}
+		.about-text p {
+			color: var(--muted); margin-bottom: 1rem; font-size: 1.02rem;
+		}
+		.about-text p:last-child { margin-bottom: 0; }
+		.info-list { list-style: none; }
+		.info-list li {
+			display: flex; gap: 0.6rem;
+			padding: 0.65rem 0;
+			border-bottom: 1px solid var(--border);
+			font-size: 0.93rem;
+		}
+		.info-list li span:first-child { color: var(--muted); min-width: 80px; }
+		.info-list a { color: var(--accent2); text-decoration: none; }
+		.info-list a:hover { text-decoration: underline; }
+
+		/* ── SKILLS ── */
+		#skills { background: var(--bg); }
+		.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 1.5rem; }
+		.skill-card {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: 12px;
+			padding: 1.6rem 1.8rem;
+			transition: border-color 0.2s, transform 0.2s;
+		}
+		.skill-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+		.skill-card h3 {
+			font-family: var(--font-display); font-size: 0.82rem; font-weight: 700;
+			letter-spacing: 0.14em; text-transform: uppercase;
+			color: var(--accent2); margin-bottom: 1rem;
+		}
+		.pill-group { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+		.pill {
+			background: rgba(255,255,255,0.05);
+			border: 1px solid var(--border);
+			color: var(--text);
+			font-size: 0.8rem; padding: 0.25rem 0.7rem; border-radius: 5px;
+		}
+
+		/* ── EXPERIENCE ── */
+		#experience { background: var(--bg2); }
+		.timeline { position: relative; padding-left: 2rem; }
+		.timeline::before {
+			content: ''; position: absolute; left: 0; top: 6px; bottom: 0;
+			width: 2px; background: var(--border);
+		}
+		.timeline-item { position: relative; margin-bottom: 3rem; }
+		.timeline-item::before {
+			content: ''; position: absolute; left: -2.4rem; top: 6px;
+			width: 10px; height: 10px; border-radius: 50%;
+			background: var(--accent); border: 2px solid var(--bg2);
+			box-shadow: 0 0 0 3px var(--accent-glow);
+		}
+		.timeline-meta {
+			font-size: 0.78rem; font-weight: 500; color: var(--accent);
+			letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.25rem;
+		}
+		.timeline-title {
+			font-family: var(--font-display); font-size: 1.15rem; font-weight: 700;
+			margin-bottom: 0.15rem;
+		}
+		.timeline-org { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.8rem; }
+		.timeline-list { list-style: none; }
+		.timeline-list li {
+			color: var(--muted); font-size: 0.93rem; padding: 0.2rem 0;
+			padding-left: 1.1rem; position: relative;
+		}
+		.timeline-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; top: 0.27rem; }
+
+		/* ── EDUCATION ── */
+		#education { background: var(--bg); }
+		.edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.4rem; }
+		.edu-card {
+			background: var(--card); border: 1px solid var(--border);
+			border-radius: 12px; padding: 1.6rem 1.8rem;
+			transition: border-color 0.2s, transform 0.2s;
+		}
+		.edu-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+		.edu-card .date { font-size: 0.75rem; color: var(--accent); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+		.edu-card h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
+		.edu-card .inst { color: var(--muted); font-size: 0.87rem; margin-bottom: 0.7rem; }
+		.edu-card .detail { color: var(--muted); font-size: 0.83rem; line-height: 1.5; }
+		.edu-card .certs { margin-top: 0.6rem; font-size: 0.78rem; color: var(--accent2); }
+
+		/* ── LANGUAGES ── */
+		#languages { background: var(--bg2); }
+		.lang-grid { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+		.lang-card {
+			background: var(--card); border: 1px solid var(--border);
+			border-radius: 10px; padding: 1.2rem 2rem; text-align: center;
+			min-width: 160px; transition: border-color 0.2s;
+		}
+		.lang-card:hover { border-color: var(--accent); }
+		.lang-card .lang-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; }
+		.lang-card .lang-level { font-size: 0.8rem; color: var(--accent2); margin-top: 0.2rem; }
+
+		/* ── CONTACT ── */
+		#contact {
+			background: var(--bg);
+			text-align: center;
+		}
+		#contact .section-title { margin-bottom: 1rem; }
+		#contact p { color: var(--muted); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+		.contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.2rem; }
+		.contact-link {
+			display: flex; align-items: center; gap: 0.6rem;
+			background: var(--card); border: 1px solid var(--border);
+			border-radius: 8px; padding: 0.8rem 1.4rem;
+			color: var(--text); text-decoration: none; font-size: 0.9rem;
+			transition: all 0.2s;
+		}
+		.contact-link:hover { border-color: var(--accent); color: var(--accent2); transform: translateY(-2px); }
+		.contact-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+		/* ── FOOTER ── */
+		footer {
+			text-align: center; padding: 2rem;
+			border-top: 1px solid var(--border);
+			color: var(--muted); font-size: 0.82rem;
+		}
+
+		/* ── ANIMATIONS ── */
+		@keyframes fadeUp {
+			from { opacity: 0; transform: translateY(24px); }
+			to   { opacity: 1; transform: translateY(0); }
+		}
+
+		/* ── RESPONSIVE ── */
+		@media (max-width: 700px) {
+			.about-grid { grid-template-columns: 1fr; }
+			.timeline { padding-left: 1.4rem; }
+			.timeline-item::before { left: -1.8rem; }
+		}
+	</style>
+</head>
+<body>
+
+	<!-- Nav -->
+	<nav>
+		<a href="#hero" class="active">Home</a>
+		<a href="#about">About</a>
+		<a href="#skills">Skills</a>
+		<a href="#experience">Experience</a>
+		<a href="#education">Education</a>
+		<a href="#contact">Contact</a>
+	</nav>
+
+	<!-- Hero -->
+	<section id="hero">
+		<p class="hero-label">Data Analyst &amp; Reporting Developer</p>
+		<h1>Lais<br><span>Amarkhail</span></h1>
+		<p class="hero-sub">Economics background · Python · SQL · Power BI · Turning complex data into clear decisions.</p>
+		<div class="hero-badges">
+			<span class="badge">Python</span>
+			<span class="badge">SQL</span>
+			<span class="badge">Power BI</span>
+			<span class="badge">Scikit-Learn</span>
+			<span class="badge">Machine Learning</span>
+			<span class="badge">DAX</span>
+		</div>
+		<div class="hero-cta">
+			<a href="#experience" class="btn btn-primary">View Experience</a>
+			<a href="#contact" class="btn btn-ghost">Get in Touch</a>
+		</div>
+	</section>
+
+	<!-- About -->
+	<section id="about">
+		<div class="container">
+			<p class="section-label">About</p>
+			<h2 class="section-title">Who I Am</h2>
+			<div class="about-grid">
+				<div class="about-text">
+					<p>Building on an academic background in economics with a strong analytical focus, I have developed solid experience in data analysis. I work with Python, SQL, and Power BI to systematically analyze complex datasets and derive data-driven recommendations.</p>
+					<p>My goal is to obtain a responsible position as a Data Analyst, where I can combine economic thinking with modern data analytics methods — bridging the gap between numbers and meaningful insight.</p>
+					<p>Outside of work I enjoy reading, traveling, going to the gym, and playing football and chess.</p>
+				</div>
+				<ul class="info-list">
+					<li><span>Location</span><span>24113 Kiel, Germany</span></li>
+					<li><span>Email</span><span><a href="mailto:laisamarkhail206@gmail.com">laisamarkhail206@gmail.com</a></span></li>
+					<li><span>LinkedIn</span><span><a href="https://www.linkedin.com/in/lais-amarkhail" target="_blank">@Lais Amarkhail</a></span></li>
+					<li><span>Languages</span><span>Pashto/Dari · German B2 · English B2</span></li>
+					<li><span>Interests</span><span>Reading · Traveling · Gym · Football · Chess</span></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<!-- Skills -->
+	<section id="skills">
+		<div class="container">
+			<p class="section-label">Expertise</p>
+			<h2 class="section-title">Technical Skills</h2>
+			<div class="skills-grid">
+				<div class="skill-card">
+					<h3>Programming</h3>
+					<div class="pill-group">
+						<span class="pill">Python</span>
+						<span class="pill">NumPy</span>
+						<span class="pill">Pandas</span>
+						<span class="pill">SQL</span>
+					</div>
+				</div>
+				<div class="skill-card">
+					<h3>Data Analysis &amp; ML</h3>
+					<div class="pill-group">
+						<span class="pill">Scikit-Learn</span>
+						<span class="pill">Statistical Analysis</span>
+						<span class="pill">Clustering</span>
+						<span class="pill">Machine Learning</span>
+					</div>
+				</div>
+				<div class="skill-card">
+					<h3>Business Intelligence</h3>
+					<div class="pill-group">
+						<span class="pill">Power BI</span>
+						<span class="pill">Power Query</span>
+						<span class="pill">DAX</span>
+						<span class="pill">Data Visualization</span>
+					</div>
+				</div>
+				<div class="skill-card">
+					<h3>Soft Skills</h3>
+					<div class="pill-group">
+						<span class="pill">Analytical Thinking</span>
+						<span class="pill">Teamwork</span>
+						<span class="pill">Communication</span>
+						<span class="pill">Self-Management</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Experience -->
+	<section id="experience">
+		<div class="container">
+			<p class="section-label">Career</p>
+			<h2 class="section-title">Professional Experience</h2>
+			<div class="timeline">
+
+				<div class="timeline-item">
+					<p class="timeline-meta">09.2025 – 11.2025</p>
+					<h3 class="timeline-title">Data Analyst – World Happiness Report 2021</h3>
+					<p class="timeline-org">DataScientest.com · Remote</p>
+					<ul class="timeline-list">
+						<li>Analyzed global factors influencing subjective well-being using the World Happiness Report 2021 dataset</li>
+						<li>Conducted benchmarking and country performance comparisons</li>
+						<li>Examined country-specific profiles and structural determinants</li>
+						<li>Presented findings through meaningful visualizations</li>
+					</ul>
+				</div>
+
+				<div class="timeline-item">
+					<p class="timeline-meta">06.2023 – 03.2026</p>
+					<h3 class="timeline-title">Mechanic</h3>
+					<p class="timeline-org">Donkey Republic · Kiel, Germany</p>
+					<ul class="timeline-list">
+						<li>Technical inspection and maintenance of bicycles and e-bikes</li>
+						<li>Replacement, maintenance, and charging of e-bike batteries</li>
+						<li>Repair and replacement of defective components and functional testing</li>
+						<li>Collaboration with customer support to resolve technical issues</li>
+					</ul>
+				</div>
+
+				<div class="timeline-item">
+					<p class="timeline-meta">08.2020 – 03.2022</p>
+					<h3 class="timeline-title">Academic Preparation for Master's Studies</h3>
+					<p class="timeline-org">Germany</p>
+					<ul class="timeline-list">
+						<li>Intensive German language training</li>
+						<li>Preparation and documentation for APS and university applications</li>
+						<li>Organized relocation and integration into the German higher education system</li>
+					</ul>
+				</div>
+
+				<div class="timeline-item">
+					<p class="timeline-meta">01.2019 – 01.2020</p>
+					<h3 class="timeline-title">Marketing Department Intern</h3>
+					<p class="timeline-org">Pashtany Bank · Kabul, Afghanistan</p>
+					<ul class="timeline-list">
+						<li>Supported the General Marketing Manager in daily operations</li>
+						<li>Analyzed marketing campaigns and customer data</li>
+						<li>Prepared internal reports and presentations for management</li>
+						<li>Conducted market and competitor analysis</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- Education -->
+	<section id="education">
+		<div class="container">
+			<p class="section-label">Education</p>
+			<h2 class="section-title">Academic Background</h2>
+			<div class="edu-grid">
+
+				<div class="edu-card">
+					<p class="date">08.2025 – 11.2025</p>
+					<h3>Data Analysis – Full-time Professional Training</h3>
+					<p class="inst">DataScientest × Sorbonne University · Remote</p>
+					<p class="detail">Python (NumPy, Pandas) · Machine Learning (Scikit-Learn, clustering) · Data Visualization · SQL · Power BI / Power Query / DAX · Big Data &amp; databases</p>
+					<p class="certs">Certifications: DataScientest Certificate · Sorbonne University Academic Certificate · Microsoft Power BI PL-900 · PL-300</p>
+				</div>
+
+				<div class="edu-card">
+					<p class="date">04.2026 – 09.2026</p>
+					<h3>Master's in Environmental &amp; Resource Economics <em style="font-weight:400;font-size:0.85em;color:var(--muted)">(not completed)</em></h3>
+					<p class="inst">Christian-Albrechts-Universität zu Kiel · Germany</p>
+				</div>
+
+				<div class="edu-card">
+					<p class="date">08.2016 – 08.2020</p>
+					<h3>Bachelor of Science in Economics</h3>
+					<p class="inst">International Islamic University Islamabad · Pakistan</p>
+				</div>
+
+				<div class="edu-card">
+					<p class="date">03.2013 – 03.2016</p>
+					<h3>Higher Secondary School Certificate <span style="font-size:0.82em;color:var(--muted)">(Abitur equivalent)</span></h3>
+					<p class="inst">Ghazi High School · Kabul, Afghanistan</p>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- Languages -->
+	<section id="languages">
+		<div class="container">
+			<p class="section-label">Languages</p>
+			<h2 class="section-title">Communication</h2>
+			<div class="lang-grid">
+				<div class="lang-card">
+					<p class="lang-name">Pashto / Dari</p>
+					<p class="lang-level">Native</p>
+				</div>
+				<div class="lang-card">
+					<p class="lang-name">German</p>
+					<p class="lang-level">B2 – Professional</p>
+				</div>
+				<div class="lang-card">
+					<p class="lang-name">English</p>
+					<p class="lang-level">B2 – Professional</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact">
+		<div class="container">
+			<p class="section-label">Contact</p>
+			<h2 class="section-title">Get in Touch</h2>
+			<p>I'm open to Data Analyst and Reporting Developer opportunities. Feel free to reach out!</p>
+			<div class="contact-links">
+				<a href="mailto:laisamarkhail206@gmail.com" class="contact-link">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+					laisamarkhail206@gmail.com
+				</a>
+				<a href="https://www.linkedin.com/in/lais-amarkhail" target="_blank" class="contact-link">
+					<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+					@Lais Amarkhail
+				</a>
+				<a href="#" class="contact-link">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+					24113 Kiel, Germany
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer>
+		<p>&copy; 2026 Lais Amarkhail · Data Analyst &amp; Reporting Developer</p>
+	</footer>
+
+	<script>
+		// Active nav on scroll
+		const sections = document.querySelectorAll('section[id]');
+		const navLinks = document.querySelectorAll('nav a');
+		window.addEventListener('scroll', () => {
+			let cur = '';
+			sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+			navLinks.forEach(a => {
+				a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+			});
+		});
+	</script>
+</body>
+</html>
