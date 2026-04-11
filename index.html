@@ -182,12 +182,19 @@
 			font-size: 3rem;
 			background: linear-gradient(135deg, var(--bg2) 0%, #e0dbd2 100%);
 		}
+		.project-top.red-grad {
+			background: linear-gradient(135deg, #fde8e8 0%, #f5c6c6 100%);
+		}
 		.project-body { padding: 1.4rem 1.6rem 1.6rem; }
 		.project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.8rem; }
 		.project-tag {
 			font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
 			text-transform: uppercase; color: var(--accent);
 			background: var(--accent-soft); padding: 0.18rem 0.6rem; border-radius: 4px;
+		}
+		.project-tag.red {
+			color: #b91c1c;
+			background: rgba(185,28,28,0.10);
 		}
 		.project-card h3 {
 			font-family: var(--font-display); font-size: 1.15rem; font-weight: 700;
@@ -402,7 +409,6 @@
 
 			<div class="hero-image-wrap">
 				<div class="profile-frame">
-					<!-- Put your photo file named "profile.jpg" in the same folder as index.html -->
 					<img src="profile.jpg" alt="Lais Amarkhail"
 						onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
 					<div class="placeholder" style="display:none;">
@@ -423,7 +429,7 @@
 		<div class="container">
 			<div class="section-header reveal">
 				<p class="section-kicker">About Me</p>
-				<h2 class="section-title">Economics meets Data Science</h2>
+				<h2 class="section-title">Economics meets Data Analysis</h2>
 			</div>
 			<div class="about-grid">
 				<div class="about-text reveal">
@@ -454,11 +460,12 @@
 		<div class="container">
 			<div class="section-header reveal">
 				<p class="section-kicker">Portfolio</p>
-				<h2 class="section-title">Python Projects</h2>
-				<p class="section-sub">Data analysis, machine learning, and visualization work built with Python.</p>
+				<h2 class="section-title">My Projects</h2>
+				<p class="section-sub">Data analysis, business intelligence, and visualization work built with Python and Power BI.</p>
 			</div>
 			<div class="projects-grid">
 
+				<!-- PROJECT 1: World Happiness Report -->
 				<div class="project-card reveal">
 					<div class="project-top">🌍</div>
 					<div class="project-body">
@@ -479,7 +486,28 @@
 					</div>
 				</div>
 
+				<!-- PROJECT 2: London Fire Brigade -->
+				<div class="project-card reveal">
+					<div class="project-top red-grad">🚒</div>
+					<div class="project-body">
+						<div class="project-tags">
+							<span class="project-tag red">Power BI</span>
+							<span class="project-tag red">DAX</span>
+							<span class="project-tag red">Power Query</span>
+						</div>
+						<h3>London Fire Brigade — Response Analysis</h3>
+						<p>Built a 3-page Power BI dashboard analysing 1.9M calls, 1.67M incidents and 2.5M mobilisations across all 33 London boroughs. Covers response times, performance KPIs, and delay root-cause analysis from 2009 to 2025.</p>
+						<div class="project-links">
+							<a href="https://github.com/laisamarkhail/London-Fire-Brigade" target="_blank" class="project-link">
+								<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+								Github
+							</a>
+							<a href="#" class="project-link ghost">Live Demo</a>
+						</div>
+					</div>
+				</div>
 
+				<!-- ADD CARD -->
 				<div class="project-card add-card reveal">
 					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
 					<p>More projects coming soon</p>
@@ -568,145 +596,25 @@
         <!-- MODULE CERTIFICATES -->
         <p class="certs-section-title">Course Modules <span>DataScientest</span></p>
         <div class="certs-grid">
-
-            <div class="cert-card reveal">
-                <div class="cert-card-icon">🌐</div>
-                <div class="cert-card-body">
-                    <h3>Web Analytics</h3>
-                    <p class="cert-issuer">DataScientest</p>
-                    <a href="Certificates/Web Analytics.pdf" target="_blank" class="cert-link">View →</a>
-                </div>
-            </div>
-
-            <div class="cert-card reveal">
-                <div class="cert-card-icon">🗄️</div>
-                <div class="cert-card-body">
-                    <h3>SQL for Data Science</h3>
-                    <p class="cert-issuer">DataScientest</p>
-                    <a href="Certificates/SQL for Data Science.pdf" target="_blank" class="cert-link">View →</a>
-                </div>
-            </div>
-
-            <div class="cert-card reveal">
-                <div class="cert-card-icon">🐍</div>
-                <div class="cert-card-body">
-                    <h3>Python for Data Analysis</h3>
-                    <p class="cert-issuer">DataScientest</p>
-                    <a href="Certificates/Python for Data Analysis.pdf" target="_blank" class="cert-link">View →</a>
-                </div>
-            </div>
-
-            <div class="cert-card reveal">
-                <div class="cert-card-icon">🤖</div>
-                <div class="cert-card-body">
-                    <h3>Machine Learning with sklearn</h3>
-                    <p class="cert-issuer">DataScientest</p>
-                    <a href="Certificates/Machine Learning with sklearn.pdf" target="_blank" class="cert-link">View →</a>
-                </div>
-            </div>
-
-            <div class="cert-card reveal">
-                <div class="cert-card-icon">🗃️</div>
-                <div class="cert-card-body">
-                    <h3>Introduction to Databases for Data Analysts</h3>
-                    <p class="cert-issuer">DataScientest</p>
-                    <a href="Certificates/Introduction to Databases for Data Analysts.pdf" target="_blank" class="cert-link">View →</a>
-                </div>
-            </div>
-
-            <div class="cert-card reveal">
-                <div class="cert-card-icon">📊</div>
-                <div class="cert-card-body">
-                    <h3>Introduction to Data Visualisation and Best Practices</h3>
-                    <p class="cert-issuer">DataScientest</p>
-                    <a href="Certificates/Introduction to Data Visualisation and Best Prac....pdf" target="_blank" class="cert-link">View →</a>
-                </div>
-            </div>
-
-            <div class="cert-card reveal">
-                <div class="cert-card-icon">🔍</div>
-                <div class="cert-card-body">
-                    <h3>Introduction to Data Analysis</h3>
-                    <p class="cert-issuer">DataScientest</p>
-                    <a href="Certificates/Introduction to Data Analysis.pdf" target="_blank" class="cert-link">View →</a>
-                </div>
-            </div>
-
-            <div class="cert-card reveal">
-                <div class="cert-card-icon">📈</div>
-                <div class="cert-card-body">
-                    <h3>Introduction to Business Intelligence</h3>
-                    <p class="cert-issuer">DataScientest</p>
-                    <a href="Certificates/Introduction to Business Intelligence.pdf" target="_blank" class="cert-link">View →</a>
-                </div>
-            </div>
-
-            <div class="cert-card reveal">
-                <div class="cert-card-icon">📋</div>
-                <div class="cert-card-body">
-                    <h3>Google Sheets</h3>
-                    <p class="cert-issuer">DataScientest</p>
-                    <a href="Certificates/Google Sheets.pdf" target="_blank" class="cert-link">View →</a>
-                </div>
-            </div>
-
-            <div class="cert-card reveal">
-                <div class="cert-card-icon">📉</div>
-                <div class="cert-card-body">
-                    <h3>Exploratory Statistics with Python</h3>
-                    <p class="cert-issuer">DataScientest</p>
-                    <a href="Certificates/Exploratory Statistics with Python.pdf" target="_blank" class="cert-link">View →</a>
-                </div>
-            </div>
-
-            <div class="cert-card reveal">
-                <div class="cert-card-icon">📝</div>
-                <div class="cert-card-body">
-                    <h3>DataScientest First Exam</h3>
-                    <p class="cert-issuer">DataScientest</p>
-                    <a href="Certificates/DataScientest first exam.pdf" target="_blank" class="cert-link">View →</a>
-                </div>
-            </div>
-
-            <div class="cert-card reveal">
-                <div class="cert-card-icon">🌊</div>
-                <div class="cert-card-body">
-                    <h3>Data Visualization with Seaborn</h3>
-                    <p class="cert-issuer">DataScientest</p>
-                    <a href="Certificates/Data Visualization with Seaborn.pdf" target="_blank" class="cert-link">View →</a>
-                </div>
-            </div>
-
-            <div class="cert-card reveal">
-                <div class="cert-card-icon">📐</div>
-                <div class="cert-card-body">
-                    <h3>Data Visualization with Matplotlib</h3>
-                    <p class="cert-issuer">DataScientest</p>
-                    <a href="Certificates/Data Visualization with Matplotlib.pdf" target="_blank" class="cert-link">View →</a>
-                </div>
-            </div>
-
-            <div class="cert-card reveal">
-                <div class="cert-card-icon">🔌</div>
-                <div class="cert-card-body">
-                    <h3>Data API Fundamentals</h3>
-                    <p class="cert-issuer">DataScientest</p>
-                    <a href="Certificates/Data API Fundamentals.pdf" target="_blank" class="cert-link">View →</a>
-                </div>
-            </div>
-
-            <div class="cert-card reveal">
-                <div class="cert-card-icon">☁️</div>
-                <div class="cert-card-body">
-                    <h3>Cloud Bases for Data Analysis</h3>
-                    <p class="cert-issuer">DataScientest</p>
-                    <a href="Certificates/Cloud bases for Data Analysis.pdf" target="_blank" class="cert-link">View →</a>
-                </div>
-            </div>
-
+            <div class="cert-card reveal"><div class="cert-card-icon">🌐</div><div class="cert-card-body"><h3>Web Analytics</h3><p class="cert-issuer">DataScientest</p><a href="Certificates/Web Analytics.pdf" target="_blank" class="cert-link">View →</a></div></div>
+            <div class="cert-card reveal"><div class="cert-card-icon">🗄️</div><div class="cert-card-body"><h3>SQL for Data Science</h3><p class="cert-issuer">DataScientest</p><a href="Certificates/SQL for Data Science.pdf" target="_blank" class="cert-link">View →</a></div></div>
+            <div class="cert-card reveal"><div class="cert-card-icon">🐍</div><div class="cert-card-body"><h3>Python for Data Analysis</h3><p class="cert-issuer">DataScientest</p><a href="Certificates/Python for Data Analysis.pdf" target="_blank" class="cert-link">View →</a></div></div>
+            <div class="cert-card reveal"><div class="cert-card-icon">🤖</div><div class="cert-card-body"><h3>Machine Learning with sklearn</h3><p class="cert-issuer">DataScientest</p><a href="Certificates/Machine Learning with sklearn.pdf" target="_blank" class="cert-link">View →</a></div></div>
+            <div class="cert-card reveal"><div class="cert-card-icon">🗃️</div><div class="cert-card-body"><h3>Introduction to Databases for Data Analysts</h3><p class="cert-issuer">DataScientest</p><a href="Certificates/Introduction to Databases for Data Analysts.pdf" target="_blank" class="cert-link">View →</a></div></div>
+            <div class="cert-card reveal"><div class="cert-card-icon">📊</div><div class="cert-card-body"><h3>Introduction to Data Visualisation and Best Practices</h3><p class="cert-issuer">DataScientest</p><a href="Certificates/Introduction to Data Visualisation and Best Prac....pdf" target="_blank" class="cert-link">View →</a></div></div>
+            <div class="cert-card reveal"><div class="cert-card-icon">🔍</div><div class="cert-card-body"><h3>Introduction to Data Analysis</h3><p class="cert-issuer">DataScientest</p><a href="Certificates/Introduction to Data Analysis.pdf" target="_blank" class="cert-link">View →</a></div></div>
+            <div class="cert-card reveal"><div class="cert-card-icon">📈</div><div class="cert-card-body"><h3>Introduction to Business Intelligence</h3><p class="cert-issuer">DataScientest</p><a href="Certificates/Introduction to Business Intelligence.pdf" target="_blank" class="cert-link">View →</a></div></div>
+            <div class="cert-card reveal"><div class="cert-card-icon">📋</div><div class="cert-card-body"><h3>Google Sheets</h3><p class="cert-issuer">DataScientest</p><a href="Certificates/Google Sheets.pdf" target="_blank" class="cert-link">View →</a></div></div>
+            <div class="cert-card reveal"><div class="cert-card-icon">📉</div><div class="cert-card-body"><h3>Exploratory Statistics with Python</h3><p class="cert-issuer">DataScientest</p><a href="Certificates/Exploratory Statistics with Python.pdf" target="_blank" class="cert-link">View →</a></div></div>
+            <div class="cert-card reveal"><div class="cert-card-icon">📝</div><div class="cert-card-body"><h3>DataScientest First Exam</h3><p class="cert-issuer">DataScientest</p><a href="Certificates/DataScientest first exam.pdf" target="_blank" class="cert-link">View →</a></div></div>
+            <div class="cert-card reveal"><div class="cert-card-icon">🌊</div><div class="cert-card-body"><h3>Data Visualization with Seaborn</h3><p class="cert-issuer">DataScientest</p><a href="Certificates/Data Visualization with Seaborn.pdf" target="_blank" class="cert-link">View →</a></div></div>
+            <div class="cert-card reveal"><div class="cert-card-icon">📐</div><div class="cert-card-body"><h3>Data Visualization with Matplotlib</h3><p class="cert-issuer">DataScientest</p><a href="Certificates/Data Visualization with Matplotlib.pdf" target="_blank" class="cert-link">View →</a></div></div>
+            <div class="cert-card reveal"><div class="cert-card-icon">🔌</div><div class="cert-card-body"><h3>Data API Fundamentals</h3><p class="cert-issuer">DataScientest</p><a href="Certificates/Data API Fundamentals.pdf" target="_blank" class="cert-link">View →</a></div></div>
+            <div class="cert-card reveal"><div class="cert-card-icon">☁️</div><div class="cert-card-body"><h3>Cloud Bases for Data Analysis</h3><p class="cert-issuer">DataScientest</p><a href="Certificates/Cloud bases for Data Analysis.pdf" target="_blank" class="cert-link">View →</a></div></div>
         </div>
     </div>
 </div>
+
 	<!-- CONTACT -->
 	<div class="section-wrap alt" id="contact">
 		<div class="container">
